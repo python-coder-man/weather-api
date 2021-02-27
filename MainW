@@ -1,0 +1,22 @@
+import tkinter as tk#imports
+import MethodZ
+class Main_Window():
+    def __init__(self,master):# define vars in __init__ func
+        self.frame=tk.Frame(master)
+        self.frame.pack()
+        self.CW_button=tk.Button(self.frame,text="Current Weather",fg="black",command=MethodZ.create_NCW)#change cmd later|Making change weather button that eraeses it self when pressed
+        self.FW_button = tk.Button(self.frame, text="Forecasted Weather", fg="black",command=MethodZ.create_NFW)# change cmd later|Forecasted Weather button that eraeses it self when pressed
+        self.CL_button = tk.Button(self.frame, text="Change Locations", fg="black",command=MethodZ.create_NCL)  # change cmd later| Change Locations text bar above what ever typed in it is printed when press buttone
+        self.buttons=[self.CW_button,self.FW_button,self.CL_button]# putting buttons all toget here in a list
+        self.draw()
+
+
+    def draw(self):#makes buttons on windows
+        for i in self.buttons:
+            i.pack()
+    def erase(self):#removes the  buttons from window
+        for i in self.buttons:
+            i.pack_forget()
+
+
+
