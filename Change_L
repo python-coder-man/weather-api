@@ -1,0 +1,32 @@
+import tkinter as tk#imports
+import MethodZ
+class Change_Location():
+    def __init__(self,N_CLwindow):
+        self.N_CLwindow = N_CLwindow
+        self.myTKlabel = tk.Label(self.N_CLwindow, borderwidth=1, relief="ridge", height=3, width=70)
+        self.N_CLwindow.geometry("250x250")
+        self.backbutton = tk.Button(self.N_CLwindow, text='back', command=self.N_CLwindow.destroy)
+        #self.getL=tk.Button(self.N_CLwindow, text='type new location', command=self.get_entry)
+        self.MyTkButton = tk.Button(N_CLwindow, height=1, width=10, text="confirm", command=self.Get_MyInputValue)
+        self.MyTkButton.place(x=4, y=112)
+        # self.lock_entry=tk.Entry(self.N_CLwindow)
+        self.backbutton.pack()
+
+    # def get_entry(self):  # makes text bar
+    #     text = self.lock_entry.get()  # defines text bar
+    #     self.lock_entry.pack_forget()
+    #     self.lock_entry.delete(0, len(text))
+    #     print(text)  # makes print what ever u put in textbar
+
+    # Define Function for get Value
+    def Get_MyInputValue(self):
+
+        MyEntryBox = tk.Entry(self.N_CLwindow, width=20)
+        MyEntryBox.place(x=5, y=6)
+        getresult = MyEntryBox.get()
+        self.myTKlabel.place(x=4, y=45)
+        self.myTKlabel['text'] = "The current location is set to: " + getresult
+        print(getresult)
+        print(type(getresult))
+
+        # command will call the defined function
