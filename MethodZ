@@ -1,0 +1,56 @@
+import requests, MainW, CurrentW, ForecastedW, ChangeL  # ,data
+import tkinter as tk
+from tkinter import *
+
+#debug tips|
+
+# info from api
+url = "https://community-open-weather-map.p.rapidapi.com/weather"
+
+querystring = {"q": "La,usa", "lat": "0", "lon": "0", "callback": "test", "id": "2172797", "lang": "null",
+               "units": "\"metric\" or \"imperial\"", "mode": "xml, html"}
+
+headers = {
+    'x-rapidapi-key': "b148389fd6msh6f8a91be0f05c60p1bc650jsn6a8feb351a73",
+    'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com"
+}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+
+
+def main():  # uses code from MainW
+    window = tk.Tk()
+    M_W = MainW.Main_Window(window)
+    # C_L = ChangeL.Main_Window(window)
+
+    window.mainloop()
+
+
+def create_NFW():
+    N_FWwindow = tk.Tk()
+    F_w = ForecastedW.Forecasted_Weather(N_FWwindow)
+    N_FWwindow.mainloop()
+
+
+def create_NCW():
+    N_CWwindow = tk.Tk()
+    C_w = CurrentW.Current_Weather(N_CWwindow)
+    N_CWwindow.mainloop()
+
+
+def create_NCL():
+    N_CLwindow = tk.Tk()
+
+    MyEntryBox = tk.Entry(N_CLwindow, width=20)
+    MyEntryBox.place(x=5, y=6)
+    N_CLwindow.geometry("500x150+100+100")
+    myTKlabel = tk.Label(N_CLwindow, borderwidth=1, relief="ridge", height=3, width=70)
+    myTKlabel.place(x=4, y=45)
+
+    C_l = ChangeL.Change_Location(N_CLwindow)
+    N_CLwindow.mainloop()
+
+
+
+if __name__ == '__main__':
+    main()
